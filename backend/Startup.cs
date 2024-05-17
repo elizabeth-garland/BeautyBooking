@@ -1,4 +1,7 @@
-namespace YourNamespace
+using BeautyBooking.DataAccess;
+using Microsoft.EntityFrameworkCore;
+
+namespace BeautyBooking
 {
     public class Startup
     {
@@ -17,7 +20,10 @@ namespace YourNamespace
             // If you're using Entity Framework Core, add your DbContext here
             // services.AddDbContext<ApplicationDbContext>(options =>
             //     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<BeautyDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -55,3 +61,4 @@ namespace YourNamespace
         }
     }
 }
+
