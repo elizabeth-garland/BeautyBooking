@@ -1,7 +1,7 @@
-using BeautyBooking.Models;
+using Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BeautyBooking.DataAccess
+namespace DataAccess
 {
     public class BeautyDbContext : DbContext
     {

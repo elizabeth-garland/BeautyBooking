@@ -1,4 +1,4 @@
-using BeautyBooking.DataAccess;
+using DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 namespace BeautyBooking
