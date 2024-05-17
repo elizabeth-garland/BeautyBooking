@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace BeautyBooking.Models
+namespace Models
 {
     public class TalentUser
     {
