@@ -1,5 +1,9 @@
 using DataAccess;
 using Microsoft.EntityFrameworkCore;
+using Repositories.Interface;
+using Repositories.Repository;
+using Services.Interface;
+using Services.Service;
 
 namespace BeautyBooking
 {
@@ -16,14 +20,26 @@ namespace BeautyBooking
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddTransient<ITalentUserService, TalentUserService>();
+            services.AddTransient<ITalentUserRepository, TalentUserRepository>();
 
             // If you're using Entity Framework Core, add your DbContext here
             // services.AddDbContext<ApplicationDbContext>(options =>
             //     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<BeautyDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-        }
 
+            services.AddCors(options =>
+            {
+            options.AddPolicy("AllowReactApp",
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:3000")
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                });
+            });
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -36,6 +52,8 @@ namespace BeautyBooking
             // Serve static files from the React app
             app.UseDefaultFiles();
             app.UseStaticFiles();
+
+            app.UseCors("AllowReactApp");
 
             app.UseRouting();
 
@@ -57,7 +75,7 @@ namespace BeautyBooking
                 }
             });
 
-            app.UseStaticFiles(); // Serve static files (like HTML, JS, CSS) after checking for API routes
+            //app.UseStaticFiles(); // Serve static files (like HTML, JS, CSS) after checking for API routes
         }
     }
 }

@@ -1,12 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Models
+namespace Models.DTOs
 {
     public class TalentUser
     {
         [Key]
         [Required]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; } = "";
 
         public string Name { get; set; } = "";
 

@@ -1,21 +1,20 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialMigrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TalentUsers",
+                name: "TalentUser",
                 columns: table => new
                 {
-                    UserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
                     Location = table.Column<string>(type: "TEXT", nullable: false),
@@ -24,34 +23,34 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TalentUsers", x => x.UserId);
+                    table.PrimaryKey("PK_TalentUser", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TalentBusinesses",
+                name: "TalentBusiness",
                 columns: table => new
                 {
-                    BusinessId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    BusinessId = table.Column<string>(type: "TEXT", nullable: false),
                     BusinessName = table.Column<string>(type: "TEXT", nullable: false),
                     Location = table.Column<string>(type: "TEXT", nullable: false),
                     Bio = table.Column<string>(type: "TEXT", nullable: false),
                     ContactNumber = table.Column<string>(type: "TEXT", nullable: false),
-                    UserId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    UserId = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TalentBusinesses", x => x.BusinessId);
+                    table.PrimaryKey("PK_TalentBusiness", x => x.BusinessId);
                     table.ForeignKey(
-                        name: "FK_TalentBusinesses_TalentUsers_UserId",
+                        name: "FK_TalentBusiness_TalentUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "TalentUsers",
+                        principalTable: "TalentUser",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_TalentBusinesses_UserId",
-                table: "TalentBusinesses",
+                name: "IX_TalentBusiness_UserId",
+                table: "TalentBusiness",
                 column: "UserId");
         }
 
@@ -59,10 +58,10 @@ namespace backend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TalentBusinesses");
+                name: "TalentBusiness");
 
             migrationBuilder.DropTable(
-                name: "TalentUsers");
+                name: "TalentUser");
         }
     }
 }

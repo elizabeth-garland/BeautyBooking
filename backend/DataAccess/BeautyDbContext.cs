@@ -1,4 +1,4 @@
-using Models;
+using Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
@@ -9,16 +9,16 @@ namespace DataAccess
         {
         }
 
-        public DbSet<TalentBusiness> TalentBusinesses { get; set; }
-        public DbSet<TalentUser> TalentUsers { get; set; }
+        public DbSet<TalentBusiness> TalentBusiness { get; set; }
+        public DbSet<TalentUser> TalentUser { get; set; }
 
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     modelBuilder.Entity<TalentBusiness>()
-        //         .HasOne(p => p.TalentUser) // Specify the navigation property
-        //         .WithMany() // Specify the related entity doesn't have a navigation property back to this entity
-        //         .HasForeignKey(p => p.UserId); // Specify the foreign key property
-        // }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TalentBusiness>()
+                .HasOne(p => p.TalentUser) // Specify the navigation property
+                .WithMany() // Specify the related entity doesn't have a navigation property back to this entity
+                .HasForeignKey(p => p.UserId); // Specify the foreign key property
+        }
 
     }
 }
