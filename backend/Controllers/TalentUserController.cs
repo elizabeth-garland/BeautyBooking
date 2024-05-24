@@ -31,13 +31,12 @@ namespace Controllers
             try
             {
                 var talentUser = _talentUserService.GetUserByIdAsync(userId);
+                return Ok(talentUser); //can this be extended
             }
             catch (ArgumentException e)
             {
                 return BadRequest(e);
             }
-
-            return Ok("Working"); //can this be extended
         }
 
         // Edit user info ...

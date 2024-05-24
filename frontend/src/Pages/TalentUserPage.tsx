@@ -1,10 +1,11 @@
-// src/HomePage.tsx
 import React, { useState, useEffect } from 'react';
+import Profile from '../Components/TalentUser.tsx/Profile.tsx';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-interface TalentUser {
+export interface TalentUser {
     // Define the properties of the TalentUser object based on your DTO
-    id: string;
+    userId: string;
     name: string;
     bio: string;
     location: string;
@@ -12,11 +13,9 @@ interface TalentUser {
     email: string;
 }
 
-interface HomePageProps {
-    userId: string;
-}
 
-const HomePage: React.FC<HomePageProps> = ({ userId }) => {
+const HomePage: React.FC = () => {
+    const { userId } = useParams<{ userId: string }>();
     const [user, setUser] = useState<TalentUser | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -24,40 +23,35 @@ const HomePage: React.FC<HomePageProps> = ({ userId }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:5222/api/talent/user/${userId}");
-                console.log(response);
-                setUser(response.data);
+                const response = await axios.get(`http://localhost:5222/api/talent/user/${userId}`);
+                console.log(response.data.result);
+                setUser(response.data.result);
                 setLoading(false);
             } catch (err) {
                 setError('Error fetching data');
                 setLoading(false);
             }
         };
-
+    
         fetchData();
     }, [userId]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="loading">Loading...</div>;
     }
-
+    
     if (error) {
-        return <div>{error}</div>;
+        return <div className="error">{error}</div>;
     }
-
+    
     return (
-        <div>
-            <h1>User Profile for {userId}</h1>
+        <div className="container">
             {user ? (
-                <div>
-                    <p>Name: {user.name}</p>
-                    <p>Bio: {user.bio}</p>
-                    <p>Location: {user.location}</p>
-                    <p>Contact Number: {user.contactNumber}</p>
-                    <p>Email: {user.email}</p>
+                <div className="profile">
+                    <Profile user={user} />
                 </div>
             ) : (
-                <div>No user data found</div>
+                <div className="no-data">No user data found</div>
             )}
         </div>
     );

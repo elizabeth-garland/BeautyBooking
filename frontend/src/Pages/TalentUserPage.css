@@ -1,0 +1,19 @@
+/* TalentUserPage.css */
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.loading, .error, .no-data {
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.profile {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+}
