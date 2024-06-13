@@ -3,6 +3,7 @@ import React from 'react';
 import TalentUserPage from './Pages/TalentUserPage.tsx';
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Navbar from './Components/NavBar/Navbar.tsx';
 
 const App: React.FC = () => {
     // For demonstration, using a static userId. Replace this with dynamic logic as needed.
@@ -16,8 +17,16 @@ const App: React.FC = () => {
         ]
     )
 
+    // return (
+    //     <>
+    //     <Navbar></Navbar>
+    //     <RouterProvider router = {router}/>
+    //     </>
+    // );
     return (
-        <RouterProvider router = {router}/>
+        <>
+        <Navbar></Navbar>
+        </>
     );
 };
 

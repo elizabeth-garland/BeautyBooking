@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Profile from '../Components/TalentUser.tsx/Profile.tsx';
+import Profile from '../Components/TalentUser/Profile.tsx';
 import './TalentUserPage.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
     }
     
     return (
-        <div>
+        <div className="container-custom">
             {user ? (
                 <div className="profile">
                     <Profile user={user} />

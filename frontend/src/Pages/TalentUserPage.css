@@ -12,9 +12,8 @@
     border-radius: 5px;
 }
 
-/* .container {
-    height: 75vh;
-    padding: 20px;
+.container-custom {
+    padding: 10px;
     background-color: #aaa;
     border-radius: 5px;
-} */
+}
