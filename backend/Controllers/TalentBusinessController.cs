@@ -8,30 +8,29 @@ using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace backend.Controllers
 {
-
-    [Route("api/talent/user")]
+    [Route("api/talent/business")]
     [ApiController]
     // [Authorize(Roles = $"{Role.RoleNames.Talent}")] - add later
     [Produces("application/json")]
-    public class TalentUserController : ControllerBase
+    public class TalentBusinessController : ControllerBase
     {
         // Declare services
-        private readonly ITalentUserService _talentUserService;
+        private readonly ITalentBusinessService _talentBusinessService;
 
-        public TalentUserController(ITalentUserService talentUserService)
+        public TalentBusinessController(ITalentBusinessService talentBusinessService)
         {
-            _talentUserService = talentUserService;
+            _talentBusinessService = talentBusinessService;
         }
 
-        // Get user info
-        [HttpGet("{userId}")]
-        public IActionResult GetUserProfile([FromRoute] string userId)
+        // Get business info
+        [HttpGet("{businessId}")]
+        public IActionResult GetBusinessProfile([FromRoute] string businessId)
         {
 
             try
             {
-                var talentUser = _talentUserService.GetUserByIdAsync(userId);
-                return Ok(talentUser); //can this be extended
+                var talentBusiness = _talentBusinessService.GetBusinessByIdAsync(businessId);
+                return Ok(talentBusiness); //can this be extended
             }
             catch (ArgumentException e)
             {
@@ -39,7 +38,6 @@ namespace backend.Controllers
             }
         }
 
-        // Edit user info ...
-        // Edit name, edit bio, edit location, edit contact number, edit email
+        // Edit business info ...
     }
 }

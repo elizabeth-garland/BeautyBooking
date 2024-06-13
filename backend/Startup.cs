@@ -1,11 +1,11 @@
-using DataAccess;
+using backend.DataAccess;
 using Microsoft.EntityFrameworkCore;
-using Repositories.Interface;
-using Repositories.Repository;
-using Services.Interface;
-using Services.Service;
+using backend.Repositories.Interface;
+using backend.Repositories.Repository;
+using backend.Services.Interface;
+using backend.Services.Service;
 
-namespace BeautyBooking
+namespace backend
 {
     public class Startup
     {
@@ -22,6 +22,8 @@ namespace BeautyBooking
             services.AddControllers();
             services.AddTransient<ITalentUserService, TalentUserService>();
             services.AddTransient<ITalentUserRepository, TalentUserRepository>();
+            services.AddTransient<ITalentBusinessService, TalentBusinessService>();
+            services.AddTransient<ITalentBusinessRepository, TalentBusinessRepository>();
 
             // If you're using Entity Framework Core, add your DbContext here
             // services.AddDbContext<ApplicationDbContext>(options =>

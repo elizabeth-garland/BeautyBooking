@@ -1,19 +1,20 @@
-using Models.DTOs;
-using Repositories.Interface;
-using Services.Interface;
+using backend.Services.Interface;
+using backend.Models.DTOs;
+using backend.Repositories.Interface;
 
-namespace Services.Service;
-
-public class TalentUserService : ITalentUserService
+namespace backend.Services.Service
 {
-    private readonly ITalentUserRepository _talentUserRepository;
-    public TalentUserService(ITalentUserRepository talentUserRepository)
+    public class TalentUserService : ITalentUserService
     {
-        _talentUserRepository = talentUserRepository;
-    }
+        private readonly ITalentUserRepository _talentUserRepository;
+        public TalentUserService(ITalentUserRepository talentUserRepository)
+        {
+            _talentUserRepository = talentUserRepository;
+        }
 
-    public async Task<TalentUser> GetUserByIdAsync(string userId)
-    {
-        return await _talentUserRepository.GetUserByIdAsync(userId);
+        public async Task<TalentUser> GetUserByIdAsync(string userId)
+        {
+            return await _talentUserRepository.GetUserByIdAsync(userId);
+        }
     }
 }

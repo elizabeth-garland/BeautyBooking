@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace Models.DTOs
+namespace backend.Models.DTOs
 {
     public class TalentBusiness
     {

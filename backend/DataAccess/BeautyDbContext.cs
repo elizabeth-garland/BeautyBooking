@@ -1,7 +1,7 @@
-using Models.DTOs;
+using backend.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess
+namespace backend.DataAccess
 {
     public class BeautyDbContext : DbContext
     {
@@ -19,6 +19,5 @@ namespace DataAccess
                 .WithMany() // Specify the related entity doesn't have a navigation property back to this entity
                 .HasForeignKey(p => p.UserId); // Specify the foreign key property
         }
-
     }
 }

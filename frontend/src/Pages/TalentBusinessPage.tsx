@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './TalentUserPage.css';
+import './TalentBusinessPage.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Navbar from '../Components/TalentBusiness/NavBar/Navbar.tsx';
@@ -7,30 +7,32 @@ import About from '../Components/TalentBusiness/About/About.tsx';
 import Contact from '../Components/TalentBusiness/Contact/Contact.tsx';
 import Gallery from '../Components/TalentBusiness/Gallery/Gallery.tsx';
 import Services from '../Components/TalentBusiness/Services/Services.tsx';
+import { TalentUser } from './TalentUserPage.tsx';
 
-export interface TalentUser {
-    // Define the properties of the TalentUser object based on your DTO
-    userId: string;
-    name: string;
+export interface TalentBusiness {
+    // Define the properties of the TalentBusiness object based on your DTO
+    businessId: string;
+    businessName: string;
     bio: string;
     location: string;
     contactNumber: string;
-    email: string;
+    userId: string;
+    talentUser: TalentUser;
 }
 
 
 const HomePage: React.FC = () => {
-    const { userId } = useParams<{ userId: string }>();
-    const [user, setUser] = useState<TalentUser | null>(null);
+    const { businessId } = useParams<{ businessId: string }>();
+    const [business, setBusiness] = useState<TalentBusiness | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5222/api/talent/user/${userId}`);
+                const response = await axios.get(`http://localhost:5222/api/talent/business/${businessId}`);
                 console.log(response.data.result);
-                setUser(response.data.result);
+                setBusiness(response.data.result);
                 setLoading(false);
             } catch (err) {
                 setError('Error fetching data');
@@ -39,7 +41,7 @@ const HomePage: React.FC = () => {
         };
     
         fetchData();
-    }, [userId]);
+    }, [businessId]);
 
     if (loading) {
         return <div className="loading">Loading...</div>;

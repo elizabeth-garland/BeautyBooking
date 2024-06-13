@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Models.DTOs
+namespace backend.Models.DTOs
 {
     public class TalentUser
     {

@@ -1,7 +1,9 @@
-using Models.DTOs;
+using backend.Models.DTOs;
 
-namespace Repositories.Interface;
-public interface ITalentUserRepository
+namespace backend.Repositories.Interface
 {
-    Task<TalentUser> GetUserByIdAsync(string userId);
+    public interface ITalentUserRepository
+    {
+        Task<TalentUser> GetUserByIdAsync(string userId);
+    }
 }

@@ -1,6 +1,6 @@
-using Models.DTOs;
+using backend.Models.DTOs;
 
-namespace Services.Interface
+namespace backend.Services.Interface
 {
     public interface ITalentUserService
     {

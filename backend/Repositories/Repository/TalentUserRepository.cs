@@ -1,9 +1,9 @@
-using DataAccess;
+using backend.DataAccess;
 using Microsoft.EntityFrameworkCore;
-using Models.DTOs;
-using Repositories.Interface;
+using backend.Models.DTOs;
+using backend.Repositories.Interface;
 
-namespace Repositories.Repository
+namespace backend.Repositories.Repository
 {
     public class TalentUserRepository(BeautyDbContext context) : ITalentUserRepository
     {
