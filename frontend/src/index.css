@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
 
 :root {
   --primary-color: hsla(275, 94%, 88%, 0.955);
@@ -10,8 +10,8 @@
 }
 
 body {
-  font-family: 'EB Garamond', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: "EB Garamond", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,11 +25,11 @@ a {
 }
 
 h1 {
-  font-size: 3.5rem
+  font-size: 3.5rem;
 }
 
 h2 {
-  font-size: 3rem
+  font-size: 3rem;
 }
 
 h3 {
@@ -37,14 +37,14 @@ h3 {
 }
 
 .btn {
-  margin: .5rem;
-  padding: .7rem 1.5rem;
-  font-size: .8rem;
+  margin: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   border-radius: 25px;
   border: none;
-  background: rgba(255, 255, 255, .1);
+  background: rgba(255, 255, 255, 0.1);
   width: 90%;
   color: #f6f6f6;
   cursor: pointer;
@@ -55,7 +55,7 @@ h3 {
 }
 
 .btn-hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .btn-hover-dark {
