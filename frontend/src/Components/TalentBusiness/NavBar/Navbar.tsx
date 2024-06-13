@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import "../../index.css";
+import "../../../index.css";
 import { FaInstagram, FaFacebookSquare, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
 
